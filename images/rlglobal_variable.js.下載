@@ -1,0 +1,141 @@
+var RLReturnCode = Object.freeze(
+{
+	None: { name: "None", value: 0 },
+	DBError: { name: "DBError", value: 1 },
+	OperateSuccess: { name: "OperateSuccess", value: 2 },
+	OperateFail: { name: "OperateFail", value: 3 },
+	ParamError: { name: "ParamError", value: 4 },
+	IDNoDataFound: { name: "IDNoDataFound", value: 5 },
+	Expire: { name: "Expire", value: 6 },
+	NotAuth: { name: "NotAuth", value: 7 },
+	Repeat: { name: "Repeat", value: 8 },
+	ParseError: { name: "ParseError", value: 9 },
+	IOError: { name: "IOError", value: 10 },
+	Unhandled: { name: "Unhandled", value: 11 }
+});
+
+var RLLanguage = Object.freeze(
+{
+    English: {
+		name: "English",
+		value: 1,
+		Currency: "USD",
+		Sign: "$",
+		Point: 2,	//浮點位數
+		Separated: ",",	//分隔符號
+		Pointer: "."	//浮點符號
+	},
+    Traditional_Chinese: {
+		name: "Traditional Chinese",
+		value: 2,
+		Currency: "TWD",
+		Sign: "NT$",
+		Point: 0,	//浮點位數
+		Separated: ",",	//分隔符號
+		Pointer: "."	//浮點符號
+	},
+    Japanese: {
+		name: "Japanese",
+		value: 4,
+		Currency: "JPY",
+		Sign: "¥",
+		Point: 0,	//浮點位數
+		Separated: ",",	//分隔符號
+		Pointer: "."	//浮點符號
+	},
+    German: {
+		name: "German",
+		value: 8,
+		Currency: "EUR",
+		Sign: "€",
+		Point: 2,	//浮點位數
+		Separated: ".",	//分隔符號
+		Pointer: ","	//浮點符號
+	}
+});
+//取語言key
+function Get_LanguageByLangId(LangId)
+{
+	for(var key in RLLanguage)
+	{
+		if(RLLanguage[key].value.toString() == LangId.toString())
+		{
+			return key;
+		}
+	}
+	return '';
+}
+//取幣別key
+function Get_LanguageByCurrency(Currency)
+{
+	for(var key in RLLanguage)
+	{
+		if(RLLanguage[key].Currency == Currency)
+		{
+			return key;
+		}
+	}
+	return '';
+}
+
+
+function Get_Currency_ByLangId(LangId)
+{
+	return RLLanguage[Get_LanguageByLangId(LangId)].Currency || '';
+}
+/**
+ * Number.prototype.format(n, x, s, c)
+ * 
+ * @param integer n: 浮點位數
+ * @param integer x: 分隔位數
+ * @param mixed   s: 分隔符號
+ * @param mixed   c: 浮點符號
+ */
+Number.prototype.FormatCurrency = function(start,end,n, x, s, c) {
+	var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+		num = this.toFixed(Math.max(0, n));
+
+	return start + (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ',')) + end;
+};
+
+function Get_CurrencyFormateByLangId(Money,LangId)
+{
+	return Get_CurrencyFormate(Money,Get_LanguageByLangId(LangId));
+}
+
+function Get_CurrencyFormateByCurrency(Money, Currency)
+{
+	return Get_CurrencyFormate(Money,Get_LanguageByCurrency(Currency));
+}
+
+function Get_CurrencyFormate(Money, Key)
+{
+	Money = TryToNumber(Money);
+	if(Money == null)
+	{
+		return '';
+	}
+	return RLLanguage[Key] ?
+		Money.FormatCurrency(
+			RLLanguage[Key].value != 8 ? RLLanguage[Key].Sign : '',
+			RLLanguage[Key].value == 8 ? RLLanguage[Key].Sign : '',
+			RLLanguage[Key].Point,
+			3,
+			RLLanguage[Key].Separated,
+			RLLanguage[Key].Pointer
+		)
+		: Money.toString();
+}
+
+function TryToNumber(input)
+{
+	if(input == undefined || input == null || input == '' || isNaN(input))
+	{
+		return null;
+	}
+	if(typeof input == "number")
+	{
+		return input;
+	}
+	return parseFloat(input,10);
+}

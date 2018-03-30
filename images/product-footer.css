@@ -1,0 +1,165 @@
+/*------------------------------------*\
+            $Footer CSS 
+\*------------------------------------*/
+/*
+  * Footer CSS................This file
+  * Space
+  * Animation Effect
+  * Media Query...............RWD
+*/
+
+
+/*-----rl-row-1440-----*/
+.rl-row-1440{
+  max-width: 1440px; 
+  margin: 0 12.1%;
+  padding-right: 15px;
+  padding-left: 15px;
+} 
+
+/*-----display: flex-----*/
+    ._productfooterarea .flex{
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+    }
+    ._productfooterarea .align-end{
+      align-items: flex-end;
+      -webkit-align-items: flex-end;
+    }
+/*-----Footer Font Size-----*/
+._productfooterarea .footer {
+    /* font-family: 'Roboto', sans-serif; */
+    max-width: 1440px;
+    width: auto !important;
+    margin:0 auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 0 !important;
+    padding-bottom: 0;
+	font-size: 16px !important; 
+}
+._productfooterarea  .panel, ._productfooterarea  hr{ border-radius: 0; box-shadow: none; }
+._productfooterarea .accordion-heading{margin-bottom: 15px;}
+  ._productfooterarea .footer i.fa-angle-up,
+  ._productfooterarea .footer i.fa-angle-down{float: right;}
+  ._productfooterarea .rotate{
+    -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+          -o-transform: rotate(180deg);
+              transform: rotate(180deg);
+  }
+
+._productfooterarea .footer-description-black,
+._productfooterarea .footer-description-black a { 
+  font-size: 16px !important; 
+  font-weight: 300; 
+  line-height: 1.5; 
+}
+      ._productfooterarea .footer-description-black ul { 
+        padding-left: 0px; 
+        padding-bottom: 0px;
+        margin-bottom: 20px; 
+        margin-right: 0;
+        margin-left: 0;
+      }
+      ._productfooterarea .footer-description-black ul li,
+      ._productfooterarea .footer-description-black ul li a { 
+          list-style-type: none;
+          font-size: 16px !important;
+          font-weight: 300;
+          line-height: 1.5;
+          margin-bottom: 5px;
+      }
+
+._productfooterarea .footer a { text-decoration: none !important; outline: none; }
+._productfooterarea .footer-copyright { text-align: center !important; }
+._productfooterarea .collapse { display: block; visibility: initial; }
+
+
+
+
+
+/*------------------------------------
+            $Space
+------------------------------------*/
+  ._productfooterarea footer .container-fluid{ padding-right: 0; padding-left: 0; }
+    
+    /*-----padding-----*/
+    ._productfooterarea .rl-wrapper-topbottom{ padding-top: 20px;padding-bottom: 20px; }
+
+
+    @media screen and (max-width: 1199px){
+      ._productfooterarea .rl-wrapper-topbottom{padding-top: 40px;padding-bottom: 40px}
+    }
+    @media screen and (max-width: 767px){
+      ._productfooterarea .rl-wrapper-topbottom{padding-top: 30px;padding-bottom: 30px}
+    }
+
+
+
+
+
+/*------------------------------------
+        $Animation Effect
+------------------------------------*/
+    /*-----smooth transition-----*/
+    ._productfooterarea .transition{
+        -webkit-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                    transition: all 0.4s ease;
+    }
+
+
+
+
+
+/*------------------------------------
+        $Media Query
+------------------------------------*/
+@media screen and (max-width: 1600px) {
+  ._productfooterarea .footer {padding-right: 30px !important; padding-left: 30px !important;}
+}
+
+@media (min-width: 768px) {
+  ._productfooterarea .panel{border: none;}
+	._productfooterarea .collapse{height: auto !important;}
+}
+@media (max-width: 767px) {
+  ._productfooterarea .panel, .footer-info{padding: 0;}
+  ._productfooterarea .footer-copyright {
+      text-align: center !important;
+  }
+  ._productfooterarea .collapse {
+     display: none;
+  }
+  
+  ._productfooterarea .footer-description-black ul { padding-left: 15px; }
+  ._productfooterarea .footer-description-black ul li > a{display: block;}
+}
+
+@media (max-width: 500px) {
+  ._productfooterarea .footer {padding-right: 15px !important; padding-left: 15px !important;}
+}
+
+
+/*-----rl-row-1440-----*/
+@media screen and (max-width: 1440px){
+  .rl-row-1440{ margin: 0 4.17%; }
+}
+@media screen and (max-width: 991px){
+  .rl-row-1440{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 500px){
+  .rl-row-1440{ padding-right: 0; padding-left: 0; }
+}

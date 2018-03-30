@@ -1,0 +1,117 @@
+.rl-title {
+    font-weight: 400;
+    line-height: 1.3;
+	padding-top: calc( 32px + 0.5vw);/*60-30*/
+}
+
+.rl-title-about {
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: left;
+	
+}
+
+.rl-about {
+    /*17->10*/
+    margin-left: calc((0.43750000000000006vw + 8.6px) * (-1));
+    margin-right: calc((0.43750000000000006vw + 8.6px) * (-1));
+    flex-wrap: nowrap;
+}
+
+.rl-about-item {
+    width: calc( 100% / 5);
+    padding: 0 calc(0.43750000000000006vw + 8.6px);
+    /*17->10*/
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.rl-about-icon {
+    max-width: 75px;
+    margin: 0 auto;
+    fill: #666;
+}
+
+.rl-about-icon-desc {
+    font-size: calc(0.125vw + 15.6px);
+    line-height: 1.3;
+    font-weight: 300;
+}
+
+.text-italic{
+	font-style:italic;
+	color: #999;
+	font-weight: 300;
+}
+
+@media screen and (max-width: 1440px) {
+    .parter-logo {
+        max-width: 100%;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        margin: 0 auto;
+    }
+   
+    .rl-spotlight-body-gap85 {
+        flex: 0 0 calc( 16px + 1.25vw);
+    }
+    .rl-about {
+        max-width: 100%;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        margin: 0 auto;
+    }
+    .rl-about-item {
+        width: calc( 100% / 3);
+        max-width: 110px;
+    }
+}
+
+@media screen and ( max-width: 1024px) {
+    .rl-spotlight {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+        flex-flow: column wrap;
+    }
+    .order1 {
+        order: 1;
+    }
+    .order2 {
+        order: 2;
+    }
+    .order3 {
+        order: 3;
+    }
+	 .rl-title {
+        text-align: center;
+    }
+
+
+}
+
+@media screen and (max-width: 991px) {
+	.divide-line {
+		border-bottom: 1px solid #dddddd;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.rl-text-lg{
+		text-align: center;
+	}
+	
+	.rl-title-about {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 480px) {
+    .rl-about {
+        flex-flow: wrap;
+    }
+}

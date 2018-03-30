@@ -1,0 +1,186 @@
+svg4everybody();
+
+jQuery(document).ready(function ($) {
+	var rlNav = $("#rl-Nav");
+	var hamburger = $(".hamburger");
+	var contentWrapper = $(".content-wrapper");
+	var currentLocation = location.href;
+
+	$("#login").attr("href", currentLocation);
+
+	hamburger.on("click", function (e) {
+		$("body").toggleClass("noscroll");
+		hamburger.toggleClass("is-active");
+		rlNav.toggleClass("active");
+	});
+
+	$(document).on("click", function (e) {
+		if (hamburger.hasClass("is-active")) {
+			if ((!contentWrapper.is(e.target) && contentWrapper.has(e.target).length === 0) && (!hamburger.is(e.target) &&
+					hamburger.has(e.target).length === 0)) {
+				$("body").removeClass("noscroll");
+				hamburger.removeClass("is-active");
+				rlNav.removeClass("active");
+			}
+		}
+	});
+
+	var isPageToLockMiniCart = window.location.pathname.match(/^\/contentstore\/(index.html|big-combo-sale|promo\/2017-Year-End-Rewards|featureddeveloper|wishlist.html|ccdproduct.html)/i) !== null;
+
+	if (isPageToLockMiniCart) {
+		$(window).on('scroll load', function (e) {
+			if (($(window).scrollTop() > 50)) {
+				if (($("#cartNum").text() !== '0') && (isPageToLockMiniCart)) {
+					$(".minicart").addClass("fixed");
+				}
+				$("#__backtotop__").addClass("fixed");
+			} else {
+				$(".minicart").removeClass("fixed");
+				$("#__backtotop__").removeClass("fixed");
+			}
+		});
+
+		$("#__backtotop__").click(function () {
+			$('html,body').animate({
+				scrollTop: 0
+			}, 'slow');
+		});
+	}
+
+	$('#left-menu a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	})
+
+	$(".rl-menu .rl-login, #rl-member-dropdown").hover(
+		function () {
+			$("#rl-member-dropdown").addClass("show");
+		},
+		function () {
+			$("#rl-member-dropdown").removeClass("show");
+			$(".rl-topnav .rl-dropdown").css("background-color", "transparent");
+			$(".rl-menu .rl-login .icon").css("fill", "");
+		}
+	);
+
+	window.onclick = function (event) {
+		if (!$(event.target).hasClass('.rl-login')) {
+			var dropdowns = document.getElementsByClassName("rl-dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+					$(".rl-topnav .rl-dropdown").css("background-color", "transparent");
+					$(".rl-menu .rl-login .icon").css("fill", "");
+				}
+			}
+		}
+	}
+
+	var _rlServerConfigPath = '/includes/script/modules/rlServerConfig.js';
+	var _scriptServerUrl = (window.location.protocol + "//" + window.location.hostname).toLowerCase().replace(/(^http.*:\/\/(.+\-)*)(.*?\.).*/, "$1www.reallusion.com/");
+	$.getScript(_scriptServerUrl + _rlServerConfigPath)
+		.then(function () {
+			getAddToCarInfo(rlServerURL.Store);
+			$("#logout").on("click", function (e) {
+				logout(rlServerURL.API, currentLocation);
+			});
+		}).fail(function () {
+			console.log('load rlServer config fail.');
+		});
+	
+	showCAItem();
+});
+
+function showCAItem(){
+	//if url is CA, menu different
+	if (/https:\/\/(stage-)?www.reallusion.com\/cloudanimator(.*)?/g.test(location.href)){
+		$(".ca-hidden-item").css('display','none');
+		$(".ca-show-item").css({'display':''});
+
+		//set "Need an account" source = 102
+		$("#login").data("source",102);
+	}
+}
+
+function memberDropDown(e) {
+	e.preventDefault();
+	if ($("#rl-member-dropdown").hasClass("show")) {
+		$("#rl-member-dropdown").removeClass("show");
+		$(".rl-topnav .rl-dropdown").css("background-color", "transparent");
+	} else {
+		document.getElementById("rl-member-dropdown").classList.toggle("show");
+		$(".rl-topnav .rl-dropdown").css("background-color", "#fff");
+		$(".rl-menu .rl-login .icon").css("fill", "#666");
+	}
+}
+
+function getAddToCarInfo(storeDomain) {
+	$.ajax({
+		url: storeDomain + "cart.aspx",
+		headers: {
+			accept: "application/json"
+		},
+		xhrFields: {
+			withCredentials: true
+		},
+		type: "GET",
+		dataType: "json",
+		success: function (response) {
+			if (response.data.TotalQty > 99) {
+				$("#cartNum").text("99");
+			} else {
+				$("#cartNum").text(response.data.TotalQty);
+			}
+		},
+		error: function (xhr) {
+			console.log("ajax error");
+		}
+	});
+}
+
+function rl_login_check_callback() {
+	if (rl_login_status) {
+		$('.rl-after-login').attr('class', function (index, classNames) {
+			return classNames.replace('hide', '');
+		});
+		$('.rl-before-login').attr('class', function (index, classNames) {
+			return classNames.replace('', 'hide ');
+		});
+		$("#avatar").attr("src", rl_login_avatar);
+		$("#username").html(rl_login_firstName);
+		$("#username").attr("title", "Manage");
+		$("#logout").attr("title", "Logout");
+		$("#login").hide();
+		$("#login_frame").hide();
+	} else {
+		$("#username").html("");
+		$("#logout").hide();
+		$("#login").attr("title", "Login");
+		$("#login").show();
+	}
+}
+
+function logout(apiDomain, rurl) {
+	$.ajax({
+		url: apiDomain + "MemberAPI/Logout",
+		headers: {
+			accept: "application/json"
+		},
+		xhrFields: {
+			withCredentials: true
+		},
+		type: "POST",
+		dataType: "json",
+		success: function (response) {
+			if (response.apiStatus == 2) {
+				location.href = rurl;
+				window.location.reload();
+			}
+		},
+		error: function (xhr) {
+			console.log("ajax error");
+		}
+	});
+}

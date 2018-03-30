@@ -1,0 +1,451 @@
+/*------------------------------------*\
+    		$Topbar CSS 
+\*------------------------------------*/
+/*
+	* Topbar CSS................This file
+	* Common....................Common use
+	* Navbar....................
+		- Nav List
+		- Nav Button
+	* Adjust Available..........You can adjust different color style
+	* Media Query...............RWD
+		- Navbar to collapse sooner
+		- Dropdown Menu transition animation
+*/
+
+#product-top-nav.affix, #product-top-nav.affix-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+}
+#footerarea ul{ list-style-image: none;}
+
+/*------------------------------------
+    		$Common
+------------------------------------*/
+	/*-----rl-row-1440-----*/
+	.rl-row-1440{
+	  max-width: 1440px; 
+	  margin: 0 12.1%;
+	  padding-right: 15px;
+	  padding-left: 15px;
+	} 
+	/*-----rl-row-1440-----*/
+	@media screen and (max-width: 1440px){
+	  .rl-row-1440{ margin: 0 4.17%; }
+	}
+	@media screen and (max-width: 991px){
+	  .rl-row-1440{
+	    padding-right: 15px;
+	    padding-left: 15px;
+	    margin: 0 auto;
+	  }
+	}
+	@media screen and (max-width: 500px){
+	  .rl-row-1440{ padding-right: 0; padding-left: 0; }
+	}
+
+
+	/*-----flex: 垂直置中-----*/
+    .flex-align-center{     
+        display: flex;
+        display: -ms-flexbox;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+
+    /*----- 左右對齊，要和flex一起用-----*/
+	.justify-space-around {
+	    -webkit-justify-content: space-around;
+	    -ms-flex-pack: justify;
+	    justify-content: space-around;
+	}
+
+    /*-----smooth transition-----*/
+    .transition{
+        -webkit-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                    transition: all 0.4s ease;
+    }
+	/*-----Topbar Font Size-----*/
+    .rl-style nav p, .rl-style nav li{font-size: 16px; line-height: 20px;}    
+    .rl-style nav p, .rl-style nav ul{margin-bottom: 0px; padding-bottom: 0;}
+
+/*------------------------------------
+    		$Navbar
+------------------------------------*/
+.navbar-container{
+	border-radius: 0; 
+	border: none;
+	margin: 0;
+	width: 100%;
+}
+.paddingNavbar{
+	    max-width: 1610px;
+	    margin: 0 auto;
+}
+	.navbar-row{
+		/*max-width: 1440px;
+		padding-right: 15px;
+		padding-left: 15px;*/
+		margin: 0 auto;
+		padding-right: 85px;
+	    padding-left: 30px;
+	    width: 100%;
+	}
+	
+	.navbar .menuArea1{ 
+		padding-left: 15px; 
+		padding-right: 15px; 
+		margin-right: 0; 
+	}
+	.navbar .menuArea2{ 
+		padding-left: 0; 
+		padding-right: 0; 
+		margin-left: 0; 
+	}
+	.navbar-header{	height: 60px; margin-right: 30px; }
+	.navbar-header-push{
+		float: left;
+		/*-webkit-transform: translateX(-70px);
+			-ms-transform: translateX(-70px);
+			-moz-transform: translateX(-70px); 
+				-o-transform: translateX(-70px);
+					transform: translateX(-70px);*/
+	}
+		.navbar-brand{ padding: 0; padding-right: 15px; }
+		.product-logo{ display: inline-block; }
+		.product-logo > img{ width: 160px; height: 32px; }
+	
+		.navbar-header>.logo-main-product{ display: none; }
+
+
+		/*-----$Nav List-----*/
+		.list-menu{display: inline;}
+		.button-menu-push{
+			float: right; 
+			/*-webkit-transform: translateX(15px);
+				-ms-transform: translateX(15px);
+				-moz-transform: translateX(15px); 
+					-o-transform: translateX(15px);
+						transform: translateX(15px);*/
+		}
+		
+		.navbar .list-menu .dropdown > a{
+			line-height: 30px;
+			padding-top: 15px; 
+			padding-bottom: 15px;
+			-webkit-transition: padding 0.4s ease;
+				-ms-transition: padding 0.4s ease;
+				-moz-transition: padding 0.4s ease;
+					-o-transition: padding 0.4s ease;
+						transition: padding 0.4s ease;
+		}
+		.nav i.fa-angle-down{float: right;}
+		.nav .fa-lg{ color: #6a6a6a; line-height: 30px; }
+		
+
+		/*-----$Nav Button-----*/
+		.button-menu > li{
+			padding-left: 15px;
+			padding-top: 10px; 
+			padding-bottom: 10px;
+			max-height: 60px;
+			/*width: 175px;*/
+		}
+		.button-menu > li > a{
+			display: inline-block; 
+			padding: 0; 
+			/*width: 9vw;*/
+		}
+			.navbar-button{	width: 100%; height: 40px; width: 120px;}
+
+
+
+
+
+/*------------------------------------
+    	$Adjust Available
+------------------------------------*/
+.bg-color-topbar{background-color: #000;} 
+	.navbar .list-menu .dropdown > a{ color: #fff; font-size: 16px;} /*topbar text color*/
+	.navbar .list-menu .dropdown > a:hover{color: #82be0f;} 
+	.navbar .list-menu .dropdown > a:focus{color: #82be0f;}
+	.open > a, .dropdown-menu{
+		border: none;
+		border-radius: 0;
+		background-color: #f5f5f5 !important; /*topbar list background color*/
+		color: #82be0f !important; /*topbar text color*/
+		font-size: 16px;
+	}
+	 
+	.dropdown-menu{ background-color: #e7e7e7; /*width: 120%;*/ padding-top: 10px; padding-bottom: 10px;}/*dropdown-menu background color*/
+		.dropdown-menu > li > a{ 
+			color: #000 !important;
+			font-weight: 300;
+			padding-top: 5px;
+		    padding-bottom: 5px;
+		    padding-right: 40px;
+			transition: all 0.1s ease-out;
+			-webkit-transition: all 0.1s ease-out;
+		} /*dropdown-menu text color*/
+		.dropdown-menu > li > a:hover{ background-color: #82be0f !important; color: #fff !important; }
+		.dropdown-menu > li > a:focus{ background-color: transparent; }
+
+	/*default button 2 with border*/
+	.navbar-nav .rl-btn-border{
+		background-color: transparent;
+        border: 2px solid #82be0f;
+        color: #82be0f;
+        /*line-height: normal;*/
+        font-size: 16px;
+        border-radius: 0;
+        transition: all 0.17s ease-in-out;
+		-moz-transition: all 0.17s ease-in-out;
+		-webkit-transition: all 0.17s ease-in-out;
+		-o-transition: all 0.17s ease-in-out;
+	}
+	.navbar-nav .rl-btn-border:hover, .navbar-nav .rl-btn-border:active, .navbar-nav .rl-btn-border:active:focus{
+        background-color: rgba(126, 234, 100, 0.35) !important;
+        border: 2px solid #82be0f;
+        color: white !important;
+        outline:none;
+    }
+    .navbar-nav .rl-btn-border:focus{
+        background-color: transparent;
+        border: 2px solid #82be0f;
+        color: #82be0f;
+        outline:none;
+    }
+
+	/*default button try with border*/
+    .navbar-nav .rl-btn-border-try:hover, .navbar-nav .rl-btn-border:active, .navbar-nav .rl-btn-border:active:focus{
+		background-color: transparent!important;
+        border: 2px solid #82be0f;
+        color: #82be0f !important;
+        /*line-height: normal;*/
+        font-size: 16px;
+        border-radius: 0;
+         transition: all 0.17s ease-in-out;
+		-moz-transition: all 0.17s ease-in-out;
+		-webkit-transition: all 0.17s ease-in-out;
+		-o-transition: all 0.17s ease-in-out;
+	}
+	.navbar-nav .rl-btn-border-try{
+        background-color: #82be0f !important;
+        border: 2px solid #82be0f;
+        color: white !important;
+        outline:none;
+        border-radius: 0;
+        font-size: 16px;
+    }
+    .navbar-nav .rl-btn-border-try:focus{
+        background-color: transparent;
+        border: 2px solid #82be0f;
+        color: #82be0f;
+        outline:none;
+
+    }
+
+#product-top-nav .navbar-collapse{
+	border: 1px solid #282828;
+}
+
+@media screen and (max-width: 1101px) {
+	.navbar-collapse { border-top: 1px solid silver; }
+		.dropdown{ border-bottom: 1px solid #282828; }
+			.dropdown-menu{	background-color: transparent; }
+
+	.button-menu-push{
+			float: none; 
+		}
+
+
+	.top-mobile-left{ width: calc( 100% - 45px ); }
+	.top-mobile-right{ width: 45px; }
+	.navbar-header>.logo-main-product{ display: block; }
+	.navbar-header{margin-right: 20px;}
+
+	.navbar .menuArea1{ margin-right: 4.17%; }
+	.navbar .menuArea2{ padding-left: 15px; padding-right: 15px; margin-left: 4.17%; }
+	.navbar-header{
+		height: 50px;
+	}
+}
+
+
+
+
+
+/*------------------------------------
+    		$Media Query
+------------------------------------*/
+@media screen and (max-width: 1500px) {
+	.navbar-row{ padding-right: 30px; padding-left: 30px; }
+
+	/*------------------------------------
+	    	$Adjust Available
+	------------------------------------*/
+	.navbar .list-menu .dropdown > a{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.navbar-header{margin-right: 0;}
+	.navbar-button{ width: 120px; }
+	/*.button-menu > li{width: 145px;}*/
+}
+
+@media (min-width: 1200px) and (max-width: 1300px)  {
+	.navbar .list-menu .dropdown > a{ padding-left: 10px; padding-right: 10px; }
+}
+
+@media screen and (max-width: 1200px){
+	.navbar-button{	width: 100px;}
+	.product-logo img{ width: 190px; }
+}
+
+@media screen and (min-width: 1102px) {
+	.nav i.fa-angle-down{display: none !important; float: right;}
+	.button-menu > li > a{max-width: 195px;}
+}
+
+@media screen and (max-width: 1101px) {
+	/*------------------------------------
+    	$Navbar to collapse sooner
+	------------------------------------*/
+    .navbar-header {float: none;}
+    .navbar-left,.navbar-right {float: none !important;}
+    .navbar-toggle {display: block;}
+    .navbar-collapse {
+        /*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);*/
+        padding: 0;
+        max-height: 100% !important; 
+    }
+    .navbar-fixed-top {top: 0; border-width: 0 0 1px;}
+    .navbar-collapse.collapse {display: none!important;}
+    .navbar-nav {float: none!important;}
+    .navbar-nav>li {float: none;}
+    .navbar-nav>li>a {padding-top: 10px; padding-bottom: 10px;}
+    .collapse.in{display:block !important;}
+
+
+
+
+
+	/*------------------------------------
+    		$Hamburger Button Style
+	------------------------------------*/
+	.navbar-toggle { 
+		 border: none; 
+		 color: #aaa;
+		 font-size: 24px; 
+		 margin-right: 0; 
+	}
+	.navbar-toggle:hover { 
+		background-color: transparent !important;
+		margin-right: 0; 
+	}
+	.navbar-toggle:focus { background-color: transparent !important; }
+	
+
+
+
+
+	.open > a, .dropdown-menu{ background-color: transparent !important; }
+	.open i.fa-angle-down{
+		-webkit-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+		 		-o-transform: rotate(180deg);
+		 			transform: rotate(180deg);
+	}
+	
+	/*--------------------------------------
+    	$Dropdown Menu transition animation
+	---------------------------------------*/
+	.dropdown .dropdown-menu {
+	    max-height: 0;
+	    display: block;
+	    overflow: hidden;
+	    opacity: 0;
+	    padding: 0;
+	    -webkit-transition: all 0.4s ease;
+	    	-ms-transition: all 0.4s ease;
+	    	-moz-transition: all 0.4s ease;
+	    		-o-transition: all 0.4s ease;
+	    			transition: all 0.4s ease;
+	}
+	.open .dropdown-menu {
+	    max-height: 350px;
+	    opacity: 1;
+	    padding-bottom: 15px;
+	}
+
+
+
+
+
+    .dropdown-menu{
+		position: static;
+		float: none;
+		width: auto;
+		margin-top: 0;
+		background-color: transparent;
+		border: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.dropdown-menu > li > a { 
+		padding-left: 0 !important; 
+		-webkit-transition: all 0.4s ease;
+			-ms-transition: all 0.4s ease;
+			-moz-transition: all 0.4s ease;
+				-o-transition: all 0.4s ease;
+					transition: all 0.4s ease; 
+	}
+	.dropdown-menu > li > a:hover{ padding-left: 15px !important;}
+
+	.navbar-row{ padding: 0; }
+		.navbar-header{ 
+			padding-right: 0;
+			padding-left: 0;	
+		}
+		.rl-style .navbar-collapse{padding: 0 10px;}
+			.product-logo > img{ max-width: 100%; }
+
+
+	.list-menu,.button-menu{ width: 100%; margin: 0; }
+	.navbar .list-menu .dropdown > a{ padding: 15px 0; }
+
+	.rl-style .button-menu{margin-top: 20px; margin-bottom: 20px;}
+		.button-menu > li{padding-left: 0; width: 100%;}
+		.button-menu > li > a{width: 30%; padding: 0;}
+		.navbar-button{ width: 100%; }
+
+	/*------------------------------------
+	    	$Adjust Available
+	------------------------------------*/
+	.dropdown-menu > li > a{
+		color: #fff !important;
+		
+	}
+}
+
+@media screen and (max-width: 991px) { 
+	.navbar .menuArea1{ margin-right: 0 }
+	.navbar .menuArea2{ margin-left: 0 }
+}
+
+@media screen and (max-width: 768px) { .button-menu > li > a{width: 100%;} }
+
+@media screen and (max-width: 568px) {
+	.navbar-header{ padding-right: 0; padding-left: 0; }
+		.navbar-toggle{padding-right: 0; margin-right: 0;}
+}
+
+@media screen and (max-width: 400px) { .rl-style .navbar-collapse{padding: 0 15px;} }

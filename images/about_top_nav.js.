@@ -1,0 +1,21 @@
+$(document).ready(function () {
+
+    $('#nav-toggle').on("click", function () {
+        $('.rl-nav-list ul').slideToggle();
+    });
+    var gethightlight = function () {
+        var highlight = document.getElementsByClassName('rl-nav-list')[0].getElementsByTagName('a');
+        var locationpath = window.location.href;
+        var PressResourcePage = 'https://stage-www.reallusion.com/about/press_resource_page.html'
+        var hasPressResourcePage = locationpath.includes(PressResourcePage);
+        var pressResource = 'https://stage-www.reallusion.com/about/press_resource.html';
+        for (var i in highlight) {
+            if (highlight[i].href == locationpath) {
+                highlight[i].className += "active";
+            } else if (hasPressResourcePage == true && highlight[i].href == pressResource) {
+                highlight[i].className += "active";
+            }
+        }
+    }
+    gethightlight();
+});
